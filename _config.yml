@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Holpriger KI-Lernweg<br>(좌충우돌 AI 학습기)"
+title                    : "Holpriger KI-Lernweg<br>좌충우돌 AI 학습기"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Keein Lee"
@@ -104,7 +104,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Keein Lee<br>(계인이)"
+  name             : "Keein Lee<br>계인이"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Think Different, Live Bold"
   location         : "Ingolstadt, Deutschland"
