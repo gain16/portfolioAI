@@ -854,7 +854,7 @@ plt.title("Popular Movies")
 
 
     
-![popular movies.](/images/output_29_1.png)
+![](/images/output_29_1.png)
     
 
 
