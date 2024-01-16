@@ -1,6 +1,6 @@
 ---
 layout: post
-title: airbnb 클론 프로젝트 - Amenity Detection
+title: airbnb Clone project - Amenity Detection
 subtitle: Custom Dataset에 대한 Object Detection 프로젝트
 cover-img: /assets/img/amenity_thumb.png
 thumbnail-img: /assets/img/amenity_thumb.png
