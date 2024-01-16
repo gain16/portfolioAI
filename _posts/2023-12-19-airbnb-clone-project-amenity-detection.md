@@ -8,7 +8,7 @@ share-img: /assets/img/amenity_thumb.png
 tags: [object detection, custom dataset, centernet]
 ---
 
-# Amenity Detection - airbnb 클론 프로젝트
+# Amenity Detection - airbnb Clone project
 
 ## Object Detection 문제영역 소개
 
