@@ -1,8 +1,8 @@
 ---
 layout: single
-title: Amenity Detection - airbnb Clone project
+title: Amenity Detection(_using CenterNet_) - airbnb Clone project
 subtitle: Custom Dataset에 대한 Object Detection 프로젝트
-# cover-img: /assets/img/amenity_thumb.png
+#cover-img: /assets/img/amenity_thumb.png
 #thumbnail-img: /assets/img/amenity_thumb.png
 #share-img: /assets/img/amenity_thumb.png
 tags: [object detection, custom dataset, centernet]
@@ -13,6 +13,13 @@ tags: [object detection, custom dataset, centernet]
 Object Detection은 컴퓨터 비전 분야의 대표적인 문제영역으로 물체 내에 존재하는 물체들의 위치와 물체의 종류를 검출하는 문제 영역입니다. 
 
 이때 Object Detection의 예측 결과로 출력되는 것은 한 이미지 내에 존재하는 물체들의 위치를 나타내는 **[Bounding Box의 꼭지점 좌표(x_min, y_min, x_max, y_max), 물체의 label, 검출 결과에 대한 확신의 정도]** 형태가 됩니다.
+
+* x_min: 물체의 Bounding Box의 왼쪽 위 (Left-Top) x좌표
+* y_min: 물체의 Bounding Box의 왼쪽 위 (Left-Top) y좌표
+* x_max: 물체의 Bounding Box의 오른쪽 아래 (Right-Bottom) x좌표
+* y_max: 물체의 Bounding Box의 오른쪽 아래 (Right-Bottom) y좌표
+* class: Bounding Box에 속한 물체의 class
+* confidence: Bounding Box에 실제 물체가 있을 것이라고 확신하는 정도를 나타내는 값 (IoU: 0.0~1.0 사이의 값)
 
 ![Untitled](../assets/img/Untitled.png)
 그림 1 - Object Detection 모델의 예측 결과 - (Bounding Box의 위치, 물체의 종류, 확신의 정도) [1]
@@ -49,6 +56,14 @@ Faster-RCNN, SSD, EfficientDet, CenterNet 등 Object Detection을 위한 최신 
 그림 5 - TensorFlow Object Detection API를 이용한 검출 예시 [6]
 
 airbnb 데이터 사이언스 팀에서는 Faster R-CNN과 SSD 모델을 이용한 Object Detection을 검토하였습니다. 하지만 본 클론 프로젝트는 airbnb의 포스팅 이후에 제안된 **좀더 최신 모델인 CenterNet[7] 모델을 이용하여 학습 및 평가를 진행**하였습니다.
+
+### CenterNet의 장점
+* 효율성: 복잡한 영역 제안 과정이나 anchor 박스가 필요 없어 계산적으로 효율적이다.
+* 간결함: 구조가 간단하고, 구현 및 학습이 용이하다.
+* 정확도: 중심점 예측 방식이 정확도를 높여준다. 특히 작은 객체 탐지에 효과적이다.
+* 다양성: 다양한 크기와 클래스의 객체를 효과적으로 탐지할 수 있다.
+* 확장성: 다른 컴퓨터 비전 태스크에도 적용 가능하다.
+
 
 # Google Open Images Dataset
 
@@ -91,19 +106,11 @@ u
 위의 예시에서 볼 수 있듯이 개별 레이블 별로 mAP 값의 편차가 심한 모습을 볼 수 있습니다. 이는 여러 원인이 있을 수 있지만 각 레이블에 대응되는 Training 이미지 개수의 편차가 심한 것이 주요 원인 중 하나로 볼 수 있습니다. 따라서 airbnb 데이터 사이언스팀에서 진행한 것처럼 추가 이미지를 수집한 뒤 이에 대한 정답을 labelling 한뒤 추가 데이터를 이용해서 Training하는 과정을 통해 mAP를 향상시키는 작업을 추후 작업으로 진행해볼 계획입니다.
 
 # References
-
-[1] [https://www.inflearn.com/course/욜로-딥러닝-논문구현?inst=60c23368](https://www.inflearn.com/course/%EC%9A%9C%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D-%EB%85%BC%EB%AC%B8%EA%B5%AC%ED%98%84?inst=60c23368)
-
-[2] [https://www.tesla.com/ko_KR/autopilot](https://www.tesla.com/ko_KR/autopilot)
-
-[3] [https://www.youtube.com/watch?v=NrmMk1Myrxc](https://www.youtube.com/watch?v=NrmMk1Myrxc)
-
-[4] [https://medium.com/airbnb-engineering/amenity-detection-and-beyond-new-frontiers-of-computer-vision-at-airbnb-144a4441b72e](https://medium.com/airbnb-engineering/amenity-detection-and-beyond-new-frontiers-of-computer-vision-at-airbnb-144a4441b72e)
-
-[5] [https://www.tensorflow.org/about/case-studies?hl=ko](https://www.tensorflow.org/about/case-studies?hl=ko)
-
-[6] [https://github.com/tensorflow/models/tree/master/research/object_detection](https://github.com/tensorflow/models/tree/master/research/object_detection)
-
-[7] [https://arxiv.org/abs/1904.07850](https://arxiv.org/abs/1904.07850)
-
-[8] [https://storage.googleapis.com/openimages/web/factsfigures_v4.html](https://storage.googleapis.com/openimages/web/factsfigures_v4.html)
+[1] [https://www.inflearn.com/course/욜로-딥러닝-논문구현?inst=60c23368](https://www.inflearn.com/course/%EC%9A%9C%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D-%EB%85%BC%EB%AC%B8%EA%B5%AC%ED%98%84?inst=60c23368)  
+[2] [https://www.tesla.com/ko_KR/autopilot](https://www.tesla.com/ko_KR/autopilot)  
+[3] [https://www.youtube.com/watch?v=NrmMk1Myrxc](https://www.youtube.com/watch?v=NrmMk1Myrxc)  
+[4] [https://medium.com/airbnb-engineering/amenity-detection-and-beyond-new-frontiers-of-computer-vision-at-airbnb-144a4441b72e](https://medium.com/airbnb-engineering/amenity-detection-and-beyond-new-frontiers-of-computer-vision-at-airbnb-144a4441b72e)  
+[5] [https://www.tensorflow.org/about/case-studies?hl=ko](https://www.tensorflow.org/about/case-studies?hl=ko)  
+[6] [https://github.com/tensorflow/models/tree/master/research/object_detection](https://github.com/tensorflow/models/tree/master/research/object_detection)  
+[7] [https://arxiv.org/abs/1904.07850](https://arxiv.org/abs/1904.07850)  
+[8] [https://storage.googleapis.com/openimages/web/factsfigures_v4.html](https://storage.googleapis.com/openimages/web/factsfigures_v4.html)  
